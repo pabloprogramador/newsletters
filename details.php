@@ -1,5 +1,15 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
+/**
+ * Newsletters
+ *
+ * @package		Newsletters
+ * @author		Jerel Unruh
+ * @copyright	Copyright (c) 2011 - 2013, Jerel Unruh (http://jerel.co/)
+ * @license		http://www.apache.org/licenses/LICENSE-2.0.html (Apache 2)
+ * @link		http://github.com/jerel/newsletters
+ */
+
 class Module_Newsletters extends Module {
 
 	public $version = '1.3.2';

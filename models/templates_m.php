@@ -1,12 +1,15 @@
-<?php defined('BASEPATH') OR die('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
+
 /**
- * Newsletter module
+ * Newsletters
  *
- * @author 		Jerel Unruh - PyroCMS Dev Team
- * @package 	PyroCMS
- * @subpackage 	Newsletter module
- * @category 	Modules
+ * @package		Newsletters
+ * @author		Jerel Unruh
+ * @copyright	Copyright (c) 2011 - 2013, Jerel Unruh (http://jerel.co/)
+ * @license		http://www.apache.org/licenses/LICENSE-2.0.html (Apache 2)
+ * @link		http://github.com/jerel/newsletters
  */
+
 class Templates_m extends MY_Model
 {
 	protected $_table = 'newsletter_templates';

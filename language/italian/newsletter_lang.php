@@ -1,0 +1,86 @@
+<?php
+
+// labels
+$lang['newsletters.subject'] 						= 'Oggetto';
+$lang['newsletters.created'] 						= 'Creato il';
+$lang['newsletters.sent'] 							= 'Sent On';
+$lang['newsletters.actions'] 						= 'Azioni';
+$lang['newsletters.not_sent_label'] 				= 'Non inviata';
+$lang['newsletters.view'] 							= 'Vedi';
+$lang['newsletters.edit'] 							= 'Modifica';
+$lang['newsletters.delete'] 						= 'Cancella';
+$lang['newsletters.send'] 							= 'Invia tutto';
+$lang['newsletters.send_cron'] 						= 'Invia Cron';
+$lang['newsletters.send_batch']						= 'Invio multiplo';
+$lang['newsletters.pending']						= 'Cron in attesa';
+$lang['newsletters.export_xml'] 					= 'Esporta XML';
+$lang['newsletters.export_csv'] 					= 'Esporta CSV';
+$lang['newsletters.export_json'] 					= 'Esporta JSON';
+$lang['newsletters.title_label'] 					= 'Oggetto newsletter';
+$lang['newsletters.email_label'] 					= 'Indirizzo email';
+$lang['newsletters.subscribe'] 						= 'Iscriviti';
+$lang['newsletters.unsubscribe'] 					= 'Disiscriviti';
+$lang['newsletters.admin_subscribe'] 				= 'Aggiungi iscritto';
+$lang['newsletters.admin_unsubscribe'] 				= 'Rimuovi iscritto';
+$lang['newsletters.subject_suffix'] 				= 'Newsletter';
+$lang['newsletters.target']							= 'Target URL';
+$lang['newsletters.url']							= 'Inserisci URL';
+$lang['newsletters.add']							= 'Aggiungi un altro URL';
+$lang['newsletters.stats']							= 'Statistiche';
+$lang['newsletters.unique_opens']					= 'Aperture uniche';
+$lang['newsletters.total_opens']					= 'Aperture totali';
+$lang['newsletters.unique_clicks']					= 'Click unici';
+$lang['newsletters.total_clicks']					= 'Click totali';
+$lang['newsletters.template_select']				= 'Seleziona Template';
+$lang['newsletters.template_title']					= 'Titolo Template';
+$lang['newsletters.template_select_edit']			= 'Seleziona un template da modificare';
+$lang['newsletters.template_edit']					= 'Modifica Template';
+$lang['newsletters.template_new']					= 'Crea un nuovo Template';
+$lang['newsletters.tracked_urls']					= 'URLs tracciati';
+$lang['newsletters.body']							= 'Corpo Newsletter';
+$lang['newsletters.template_body']					= 'Corpo Template';
+
+// titles
+$lang['newsletters.letter_title']					= 'Newsletter';
+$lang['newsletters.newsletters']					= 'Newsletters';
+$lang['newsletters.add_title']						= 'Crea newsletter';
+$lang['newsletters.edit_title']						= 'Modifica newsletter';
+$lang['newsletters.list_title'] 					= 'Lista newsletters';
+$lang['newsletters.title_newsletter_opens']			= 'Traccia apertura newsletter';
+$lang['newsletters.title_newsletter_urls']			= 'Aggiungi URL da tracciare';
+$lang['newsletters.click_report']					= 'Click Report';
+$lang['newsletters.open_statistics']				= 'Apri Statistiche';
+$lang['newsletters.templates']						= 'Templates';
+$lang['newsletters.template_manager']				= 'Gestore Template';
+$lang['newsletters.subscribers']					= 'Iscritti';
+$lang['newsletters.statistics']						= 'Statistiche';
+
+// messages
+$lang['newsletters.example_email']					= 'user@example.com';
+$lang['newsletters.no_newsletters_error'] 			= 'Non ci sono ancora newsletter. <a href="'.current_url().'/create">Creane una</a>';
+$lang['newsletters.subscribed_success'] 			= 'Grazie per esserti iscritto, da oggi riceverai le nostre newsletter.';
+$lang['newsletters.admin_subscribed_success'] 		= 'L\'indirizzo email è stato aggiunto alla lista iscritti per ricevere le prossime newsletter.';
+$lang['newsletters.subscribe_desc'] 				= 'Iscriviti alla nostra newsletter per ricevere le nostre email.';
+$lang['newsletters.subscriber_count']				= 'Ci sono %s iscritti.';
+$lang['newsletters.unsubscribe_success'] 			= 'L\'indirizzo email è stato rimosso dalla lista iscritti.';
+$lang['newsletters.unsubscribe_error'] 				= 'Spiacenti ma l\'indirizzo email non può essere rimosso.';
+$lang['newsletters.duplicate_email'] 				= 'Questo indirizzo email risulta già registrato.';
+$lang['newsletters.default_email'] 					= 'Per favore fornisci un indirizzo email valido.';
+$lang['newsletters.delete_mail_success'] 			= 'Sei stato rimosso dalla nostra mailing list.';
+$lang['newsletters.delete_mail_error'] 				= 'Non è stato possibile eliminare il tuo indirizzo email. Per favore contattaci e provvederemo a farlo manualmente.';
+$lang['newsletters.add_success'] 					= 'La newsletter "%s" è stata salvata.';
+$lang['newsletters.add_error'] 						= 'Si è verificato un errore e non è stato possibile salvare la newsletter.';
+$lang['newsletters.template_add_success'] 			= 'Il template "%s" è stato salvato con successo.';
+$lang['newsletters.template_delete_success'] 		= 'Il template è stato cancellato con successo.';
+$lang['newsletters.sent_success'] 					= 'La newsletter è stata inviata con successo.';
+$lang['newsletters.sent_error'] 					= 'Si è verificato un errore e la newsletter non è stata inviata a tutti gli iscritti. Controlla le impostazioni e rimandala. Le email che sono state inviate con successo non saranno rimandate.';
+$lang['newsletters.no_subscribers']					= 'La newsletter è già stata mandata a tutti gli iscritti oppure la lista iscritti è vuota.';
+$lang['newsletters.all_sent']						= 'Tutte le %s email sono state inviate';
+$lang['newsletters.number_sent']					= '%s di %s email sono state inviate';
+$lang['newsletters.confirm']						= 'Stai per avviare una campagna email. Sei sicuro?';
+$lang['newsletters.tracked_urls_error']				= 'C\'è un valore non valido nel campo di traccimento URL. Tutti gli indirizzi devono iniziare con http:// o https://';
+$lang['newsletters.sending']						= 'Inviando...';
+$lang['newsletters.cron_set']						= 'Le newsletter saranno inviate quando verrà avviato Cron.';
+$lang['newsletters.opt_in_message']					= 'Grazie. Un link di attivazione è stato inviato all\'indirizzo email che ci hai fornito. Prima di essere aggiunto alla nostra lista dovrai confermare l\'account.';
+$lang['newsletters.opt_in_success']					= 'Congratulazioni! Il tuo indirizzo email è stato aggiunto alla nostra lista, da adesso riceverai le nostre newsletter.';
+$lang['newsletters.opt_in_error']					= 'Spiacenti. Sembra che il tuo link di attivazione non sia valido o che il tuo indirizzo email sia stato rimosso. Per favore iscriviti di nuovo o contattaci';

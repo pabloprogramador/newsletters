@@ -13,8 +13,8 @@ the familiar WYSIWYG editor.
 
 #### History and License
 
-This module was included in PyroCMS Professional until version 2.1. I've now pulled it out of the core of PyroCMS and 
-licensed it under the Apache 2 license.
+This module was included in PyroCMS Professional until version 2.1 and sold on the PyroCMS add-on store. I've now 
+pulled it out of the core of PyroCMS and licensed it under the Apache 2 license.
 
 #### Development and Support
 
@@ -22,3 +22,9 @@ Your pull requests, translations, and updates for new PyroCMS versions are all w
 with the module please create a new Issue here on Github.
 
 Happy sending!
+
+
+#### Translators
+
+[Marco Grüter](https://github.com/marcogrueter)
+[Christian Giupponi](https://github.com/ChristianGiupponi)

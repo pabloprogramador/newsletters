@@ -76,6 +76,8 @@ class Newsletters_m extends MY_Model
 							'read_receipts' => $input['read_receipts'],
 							'created_on' => now()
 						  ));
+
+		$newsletter_id = $this->db->insert_id();
 		
 		//key = target url, value = hash tag
 		$combined_urls = array_combine($input['tracked_urls']['target'], $input['tracked_urls']['hash']);
@@ -88,7 +90,7 @@ class Newsletters_m extends MY_Model
 								  array(
 									'target' => $key,
 									'hash' => end(explode('/', $value)),
-									'newsletter_id' => $this->db->insert_id()
+									'newsletter_id' => $newsletter_id
 								  ));
 			}
 		}

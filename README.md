@@ -26,5 +26,5 @@ Happy sending!
 
 #### Translators
 
-[Marco Grüter](https://github.com/marcogrueter)
-[Christian Giupponi](https://github.com/ChristianGiupponi)
+* [Marco Grüter](https://github.com/marcogrueter)
+* [Christian Giupponi](https://github.com/ChristianGiupponi)

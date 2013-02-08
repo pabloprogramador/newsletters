@@ -76,6 +76,8 @@ class Newsletters_m extends MY_Model
 							'read_receipts' => $input['read_receipts'],
 							'created_on' => now()
 						  ));
+
+		$newsletter_id = $this->db->insert_id();
 		
 		//key = target url, value = hash tag
 		$combined_urls = array_combine($input['tracked_urls']['target'], $input['tracked_urls']['hash']);
@@ -88,7 +90,7 @@ class Newsletters_m extends MY_Model
 								  array(
 									'target' => $key,
 									'hash' => end(explode('/', $value)),
-									'newsletter_id' => $this->db->insert_id()
+									'newsletter_id' => $newsletter_id
 								  ));
 			}
 		}
@@ -176,8 +178,10 @@ class Newsletters_m extends MY_Model
 						   ->count_all_results();
 
 		//we'll send them 50 per batch if Settings does not have a limit set
+		$batch_limit = (Settings::get('newsletter_email_limit') > 0) ? Settings::get('newsletter_email_limit') : 50;
+
 		$emails = $this->db->where('active', 1)
-			->get('newsletter_emails', $this->settings->newsletter_email_limit > 0 ? $this->settings->newsletter_email_limit : 50, $offset)
+			->get('newsletter_emails', $batch_limit, $offset)
 			->result();
 		
 		if(!$emails)

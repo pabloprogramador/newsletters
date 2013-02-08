@@ -12,7 +12,7 @@
 
 class Module_Newsletters extends Module {
 
-	public $version = '1.4.1';
+	public $version = '1.4.2';
 
 	public function info()
 	{

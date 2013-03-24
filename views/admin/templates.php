@@ -3,6 +3,7 @@
 </section>
 
 <section class="item">
+<div class="content">
 <?php echo form_open('admin/newsletters/templates', 'class="form_inputs"'); ?>
 
 	<ul>
@@ -43,4 +44,5 @@
 		<?php $this->load->view('admin/partials/buttons', array('buttons' => array('save', 'cancel') )); ?>
 	</div>
 <?php echo form_close(); ?>
+</div>
 </section>

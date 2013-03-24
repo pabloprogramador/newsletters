@@ -62,28 +62,28 @@ class Newsletters extends Admin_Controller
 	{
 		// Create pagination links
 		$total_rows = $this->newsletters_m->count_newsletters();
-		$this->data->pagination = create_pagination('admin/newsletters/index', $total_rows);
+		$data->pagination = create_pagination('admin/newsletters/index', $total_rows);
 
 		// Using this data, get the relevant results
-		$this->data->newsletters = $this->newsletters_m->get_newsletters( array('order'=>'created_on DESC',
-																			   'limit' => $this->data->pagination['limit']) );
+		$data->newsletters = $this->newsletters_m->get_newsletters( array('order'=>'created_on DESC',
+																			   'limit' => $data->pagination['limit']) );
 		
 		$this->template->title($this->module_details['name'], lang('newsletters.templates'))
 						->set('active_section', 'newsletters')
 						->append_js('module::functions.js')
 						->append_css('module::admin.css')
-						->build('admin/index', $this->data);
+						->build('admin/index', $data);
 	}
 
 	//preview the newsletter without sending it
 	public function view($id)
 	{
-		$data =& $this->data;
-		$this->data->newsletter =  $this->newsletters_m->get_newsletter($id, $data);
+		$data =& $data;
+		$data->newsletter =  $this->newsletters_m->get_newsletter($id, $data);
 		
 		$this->template->set_layout('modal', 'admin')
 					   ->append_js('module::functions.js')
-					   ->build('admin/view', $this->data);
+					   ->build('admin/view', $data);
 	}
 
 	public function create()
@@ -107,10 +107,10 @@ class Newsletters extends Admin_Controller
 		
 		//get all of the templates
 		$template_list = $this->templates_m->get_templates();
-		$this->data->template_list[0] = '';
+		$data->template_list[0] = '';
 		foreach($template_list as $template)
 		{
-			$this->data->template_list[$template->id] = $template->title;
+			$data->template_list[$template->id] = $template->title;
 		}
 
 		// Loop through each rule
@@ -137,12 +137,12 @@ class Newsletters extends Admin_Controller
 			}
 		}
 
-		$this->data->newsletter =& $newsletter;
+		$data->newsletter =& $newsletter;
 		$this->template->set('active_section', 'newsletters')
-						->append_metadata( $this->load->view('fragments/wysiwyg', $this->data, TRUE) )
+						->append_metadata( $this->load->view('fragments/wysiwyg', $data, TRUE) )
 					   ->append_js('module::functions.js')
 					   ->append_css('module::admin.css')
-					   ->build('admin/create', $this->data);
+					   ->build('admin/create', $data);
 	}
 
 	public function edit($id)
@@ -182,16 +182,16 @@ class Newsletters extends Admin_Controller
 			}
 		}
 		
-		$this->data->newsletter = $this->newsletters_m->get_newsletter_source($id);
-		$this->data->newsletter->tracked_urls = $newsletter->tracked_urls;
-		$this->data->urls		= $this->newsletters_m->get_newsletter_urls($id);
+		$data->newsletter = $this->newsletters_m->get_newsletter_source($id);
+		$data->newsletter->tracked_urls = $newsletter->tracked_urls;
+		$data->urls		= $this->newsletters_m->get_newsletter_urls($id);
 
 		// Load WYSIWYG editor
 		$this->template->set('active_section', 'newsletters')
-						->append_metadata( $this->load->view('fragments/wysiwyg', $this->data, TRUE) )
+						->append_metadata( $this->load->view('fragments/wysiwyg', $data, TRUE) )
 					   ->append_js('module::functions.js')
 					   ->append_css('module::admin.css')
-					   ->build('admin/edit', $this->data);
+					   ->build('admin/edit', $data);
 	}
 
 	public function delete($id)
@@ -217,8 +217,8 @@ class Newsletters extends Admin_Controller
 		}
 		else
 		{
-			//send a copy of $this->data along for the parser
-			$data =& $this->data;
+			//send a copy of $data along for the parser
+			$data =& $data;
 			
 			// Spit out the results for jQuery to pick up
 			$status = $this->newsletters_m->send_newsletter($this->input->post('id'), $this->input->post('batch'), $data);
@@ -234,10 +234,10 @@ class Newsletters extends Admin_Controller
 		{
 			$statistics = $this->newsletters_m->get_statistics($id);
 			
-			$this->data->statistics =& $statistics;
+			$data->statistics =& $statistics;
 			$this->template->append_js('module::functions.js')
 						   ->append_css('module::admin.css')
-						   ->build('admin/statistics', $this->data);
+						   ->build('admin/statistics', $data);
 		}
 		else
 		{

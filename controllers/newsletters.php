@@ -24,19 +24,19 @@ class Newsletters extends Public_Controller
 	//show a list of all newsletters
 	public function index()
 	{
-		$this->data->newsletters = $this->newsletters_m->get_newsletters(array('order'=>'created_on DESC'));
+		$data->newsletters = $this->newsletters_m->get_newsletters(array('order'=>'created_on DESC'));
 
-		$this->template->build('index', $this->data);
+		$this->template->build('index', $data);
 	}
 	
 	//Display newsletter for users that wish to read on the website
 	public function archive($id = '')
 	{
-		$this->data->newsletter = $this->newsletters_m->get_newsletter($id, $this->data);
+		$data->newsletter = $this->newsletters_m->get_newsletter($id, $data);
 
-		if($this->data->newsletter)
+		if($data->newsletter)
 		{
-			$this->template->build('view', $this->data);
+			$this->template->build('view', $data);
 		}
 		else
 		{
@@ -56,16 +56,16 @@ class Newsletters extends Public_Controller
 			{
 				if ($this->settings->newsletter_opt_in == '0')
 				{
-					$this->data->subscribe_message = lang('newsletters.subscribed_success');
+					$data->subscribe_message = lang('newsletters.subscribed_success');
 				}
 				else
 				{
-					$this->data->subscribe_message = lang('newsletters.opt_in_message');
+					$data->subscribe_message = lang('newsletters.opt_in_message');
 				}
 			}
 		}
 
-		$this->template->build('subscribe_form', $this->data);
+		$this->template->build('subscribe_form', $data);
 	}
 	
 	public function activate($hash = '')

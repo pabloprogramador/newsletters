@@ -3,6 +3,7 @@
 </section>
 
 <section class="item">
+	<div class="content">
 	<?php if (!empty($statistics)): ?>
 	
 		<ul class="statistics">
@@ -46,4 +47,5 @@
 			<h2><?php echo lang('newsletters.no_newsletters_error');?></h2>
 		</div>
 	<?php endif;?>
+	</div>
 </section>

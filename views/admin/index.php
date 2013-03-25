@@ -3,7 +3,7 @@
 </section>
 
 <section class="item">
-	
+	<div class="content">
 <?php if (!empty($newsletters)): ?>
 	<p class="newsletter-messages">
 	  <span class="sending" ><?php echo Asset::img('module::loading.gif', 'alt="sending"'); ?>
@@ -64,5 +64,5 @@
 <?php endif;?>
 
 <p><?php $this->load->view('admin/partials/pagination'); ?></p>
-
+	</div>
 </section>

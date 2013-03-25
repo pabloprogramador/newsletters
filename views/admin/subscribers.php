@@ -4,6 +4,7 @@
 </section>
 
 <section class="item">
+	<div class="content">
 	<?php echo form_open('admin/newsletters/subscribers/subscribe', 'class="form_inputs"'); ?>
 		<ul>
 			<li class="<?php echo alternator('even', ''); ?>">
@@ -39,4 +40,5 @@
 			<?php $this->load->view('admin/partials/buttons', array('buttons' => array('delete', 'cancel') )); ?>
 		</div>
 	<?php echo form_close(); ?>
+	</div>
 </section>

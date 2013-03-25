@@ -78,18 +78,18 @@ class Templates extends Admin_Controller
 		
 		//get all templates so we can populate the dropdown
 		$template_list = $this->templates_m->get_templates();
-		$this->data->template_list[0] = '';
+		$data->template_list[0] = '';
 		foreach($template_list as $template)
 		{
-			$this->data->template_list[$template->id] = $template->title;
+			$data->template_list[$template->id] = $template->title;
 		}
 		
 		$this->template->title($this->module_details['name'], lang('newsletters.templates'))
 						->set('active_section', 'templates')
-						->append_metadata( $this->load->view('fragments/wysiwyg', $this->data, TRUE) )
+						->append_metadata( $this->load->view('fragments/wysiwyg', $data, TRUE) )
 						->append_js('module::functions.js')
 						->append_css('module::admin.css')
-						->build('admin/templates', $this->data);
+						->build('admin/templates', $data);
 	}
 	
 	public function get_template()

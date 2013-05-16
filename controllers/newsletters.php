@@ -47,6 +47,8 @@ class Newsletters extends Public_Controller
 	public function subscribe()
 	{
 		$this->load->library('form_validation');
+
+		$data = new StdClass;
 		
 		$this->form_validation->set_rules('email', lang('newsletters.email_label'), 'trim|required|valid_email|callback__check_email');
 		

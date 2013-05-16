@@ -459,6 +459,14 @@ class Module_Newsletters extends Module {
 			</body>
 		</html>
 		');
+
+		$settings = "INSERT INTO ".$this->db->dbprefix('settings')." (`slug`, `title`, `description`, `type`, `default`, `value`, `options`, `is_required`, `is_gui`, `module`, `order`) VALUES
+		('newsletter_opt_in', 'Require Opt In', 'Subscribers will receive an activation email with a link that they must click to complete the sign up. Edit the email format in Email Templates.', 'select', '0', '0', '0=Disabled|1=Enabled', 1, 1, 'newsletters', 970),
+		('newsletter_from', '\"From\" Email Address', 'This is the address that your recipients will see in the From field.', 'text', 'do.not.reply@example.com', 'do.not.reply@example.com', '', 0, 1, 'newsletters', 971),
+		('newsletter_reply_to', '\"Reply To\" Email Address', 'This is the address that your recipients will respond to.', 'text', 'sales@example.com', 'sales@example.com', '', 0, 1, 'newsletters', 972),
+		('newsletter_email_limit', 'Limit', 'If your host limits the number of outgoing emails per hour/day set it here. Otherwise set it to 0 for automatic send', 'text', '0', '', '', 0, 1, 'newsletters', 973),
+		('newsletter_cron_enabled', 'Cron', 'Send with Cron. If enabled you must have a cron job to send newsletters.', 'select', '0', '0', '0=Disabled|1=Enabled', 0, 1, 'newsletters', 974),
+		('newsletter_cron_key', 'Cron Key', 'Set a key to prevent visitors from triggering a cron send. example.com/newsletters/cron/gy84kn', 'text', 'gy84kn', 'gy84kn', '', 0, 1, 'newsletters', 975);";
 		
 		if($this->db->query($newsletters) &&
 		   $this->db->query($newsletter_emails) &&
@@ -466,6 +474,7 @@ class Module_Newsletters extends Module {
 		   $this->db->query($newsletter_urls) &&
 		   $this->db->query($newsletter_clicks) &&
 		   $this->db->query($newsletter_templates) &&
+		   $this->db->query($settings) &&
 		   $this->db->insert('newsletter_templates', $template_1) &&
 		   $this->db->insert('newsletter_templates', $template_2) &&
 		   $this->db->insert('newsletter_templates', $template_3) &&
@@ -477,6 +486,15 @@ class Module_Newsletters extends Module {
 
 	public function uninstall()
 	{
+		$this->dbforge->drop_table('newsletters');
+		$this->dbforge->drop_table('newsletter_emails');
+		$this->dbforge->drop_table('newsletter_opens');
+		$this->dbforge->drop_table('newsletter_urls');
+		$this->dbforge->drop_table('newsletter_clicks');
+		$this->dbforge->drop_table('newsletter_templates');
+		$this->db->delete('settings', array(
+			'module' => 'newsletters'
+		));
 		return TRUE;
 	}
 

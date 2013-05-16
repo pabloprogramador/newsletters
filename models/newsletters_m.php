@@ -44,6 +44,7 @@ class Newsletters_m extends MY_Model
 	//get newsletter & parse the body
 	public function get_newsletter($id, $data)
 	{
+		$data = new StdClass;
 		$data->newsletter = $this->db->get_where('newsletters', array('id' => $id))
 							   ->row();
 
@@ -142,6 +143,8 @@ class Newsletters_m extends MY_Model
 	public function send_newsletter($id, $batch, $data)
 	{
 		$this->load->library('email');
+
+		$data = new StdClass;
 		
 		//get the newsletter directly so we can parse after the email address is available
 		$data->newsletter = $this->db->get_where('newsletters', array('id' => $id))
@@ -175,9 +178,12 @@ class Newsletters_m extends MY_Model
 						   ->where('active', 1)
 						   ->count_all_results();
 
+		// Get the limit
+		$limit = $this->settings->newsletter_email_limit > 0 ? $this->settings->newsletter_email_limit : 50;
+
 		//we'll send them 50 per batch if Settings does not have a limit set
 		$emails = $this->db->where('active', 1)
-			->get('newsletter_emails', $this->settings->newsletter_email_limit > 0 ? $this->settings->newsletter_email_limit : 50, $offset)
+			->get('newsletter_emails', $limit, $offset)
 			->result();
 		
 		if(!$emails)

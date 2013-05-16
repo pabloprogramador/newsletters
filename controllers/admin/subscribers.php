@@ -43,6 +43,7 @@ class Subscribers extends Admin_Controller
 	
 	public function index()
 	{
+		$data = new StdClass;
 		$data->subscribers = $this->subscribers_m->count_subscribers();
 		
 		$this->template->title($this->module_details['name'], lang('newsletters.subscribers'))

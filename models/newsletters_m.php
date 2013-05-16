@@ -44,6 +44,7 @@ class Newsletters_m extends MY_Model
 	//get newsletter & parse the body
 	public function get_newsletter($id, $data)
 	{
+		$data = new StdClass;
 		$data->newsletter = $this->db->get_where('newsletters', array('id' => $id))
 							   ->row();
 
@@ -142,6 +143,8 @@ class Newsletters_m extends MY_Model
 	public function send_newsletter($id, $batch, $data)
 	{
 		$this->load->library('email');
+
+		$data = new StdClass;
 		
 		//get the newsletter directly so we can parse after the email address is available
 		$data->newsletter = $this->db->get_where('newsletters', array('id' => $id))

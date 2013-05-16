@@ -62,6 +62,8 @@ class Newsletters extends Admin_Controller
 	{
 		// Create pagination links
 		$total_rows = $this->newsletters_m->count_newsletters();
+
+		$data = new StdClass;
 		$data->pagination = create_pagination('admin/newsletters/index', $total_rows);
 
 		// Using this data, get the relevant results
@@ -78,7 +80,7 @@ class Newsletters extends Admin_Controller
 	//preview the newsletter without sending it
 	public function view($id)
 	{
-		$data =& $data;
+		$data = new StdClass;
 		$data->newsletter =  $this->newsletters_m->get_newsletter($id, $data);
 		
 		$this->template->set_layout('modal', 'admin')
@@ -88,6 +90,7 @@ class Newsletters extends Admin_Controller
 
 	public function create()
 	{
+		$newsletter = new StdClass;
 		$newsletter->tracked_urls = '';
 		
 		$this->form_validation->set_rules($this->newsletter_rules);
@@ -147,6 +150,7 @@ class Newsletters extends Admin_Controller
 
 	public function edit($id)
 	{
+		$newsletter = new StdClass;
 		$newsletter->tracked_urls = '';
 		
 		$this->form_validation->set_rules($this->newsletter_rules);
@@ -182,6 +186,7 @@ class Newsletters extends Admin_Controller
 			}
 		}
 		
+		$data = new StdClass;
 		$data->newsletter = $this->newsletters_m->get_newsletter_source($id);
 		$data->newsletter->tracked_urls = $newsletter->tracked_urls;
 		$data->urls		= $this->newsletters_m->get_newsletter_urls($id);

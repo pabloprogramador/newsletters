@@ -486,6 +486,15 @@ class Module_Newsletters extends Module {
 
 	public function uninstall()
 	{
+		$this->dbforge->drop_table('newsletters');
+		$this->dbforge->drop_table('newsletter_emails');
+		$this->dbforge->drop_table('newsletter_opens');
+		$this->dbforge->drop_table('newsletter_urls');
+		$this->dbforge->drop_table('newsletter_clicks');
+		$this->dbforge->drop_table('newsletter_templates');
+		$this->db->delete('settings', array(
+			'module' => 'newsletters'
+		));
 		return TRUE;
 	}
 
